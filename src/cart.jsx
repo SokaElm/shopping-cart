@@ -4,12 +4,18 @@ import { Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 function Cart() {
-  const { cartItems } = useOutletContext();
+  const { cartItems, setCartItems } = useOutletContext();
 
   const totalPrice = cartItems.reduce(
     (total, item) => total + item.quantity * item.price,
     0
   );
+
+  function removeFromCart(productID) {
+    setCartItems((prevCartItems) =>
+      prevCartItems.filter((item) => item.id !== productID)
+    );
+  }
 
   const listItems = cartItems.map((product) => (
     <li className={styles.productList} key={product.id} id={product.id}>
@@ -26,11 +32,22 @@ function Cart() {
 
       <div className={styles.productInfo}>
         <p> {product.price}$</p>
+        <p> {product.quantity}</p>
         <p> {product.quantity * product.price}$</p>
-        <Trash2 onClick={() => addToCart(product)} />
+        <Trash2 onClick={() => removeFromCart(product.id)} />
       </div>
     </li>
   ));
+
+  if (cartItems.length < 1)
+    return (
+      <div>
+        <h1>There is nothing in your cart yet.</h1>
+        <Link to="/products">
+          You can look at our products by clicking here!
+        </Link>
+      </div>
+    );
 
   return (
     <div className={styles.content}>
@@ -45,7 +62,7 @@ function Cart() {
       </div>
       <ul className={styles.productGrid}>{listItems}</ul>
       <h3 className={styles.total}>
-        Total: {totalPrice}$
+        Subtotal: {totalPrice}$
         <Link to="/account">
           <button className={styles.btn}>Checkout</button>
         </Link>
@@ -53,4 +70,5 @@ function Cart() {
     </div>
   );
 }
+
 export default Cart;

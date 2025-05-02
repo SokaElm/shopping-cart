@@ -19,3 +19,23 @@
   text-align: center;
   padding: 1rem;
 }
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 10px;
+}
+
+.quantityControl button {
+  background-color: #eee;
+  border: none;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.quantityControl input {
+  width: 40px;
+  text-align: center;
+}

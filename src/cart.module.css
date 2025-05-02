@@ -12,6 +12,7 @@
   align-items: center;
   justify-content: space-between;
   margin-left: 35px;
+  margin-right: 85px;
 }
 
 .priceHeaders {
@@ -24,18 +25,14 @@
 .productGrid {
   border-bottom: 1px solid #242424;
 }
+
 .mainTitle {
   font-size: 3.5em;
 }
 
 .tableTitle {
-  font-size: 1.5em;
+  font-size: 1.4em;
   color: #213547;
-}
-
-.tableHeaders {
-  display: flex;
-  align-items: center;
 }
 
 .productInfo {
